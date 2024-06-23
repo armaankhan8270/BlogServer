@@ -40,12 +40,13 @@ export const Login = async (req, res, next) => {
       req.body.password,
       blogusers.password
     );
-    if (!isPasswordCorrect)
+    if (!isPasswordCorrect) {
       return res
         .status(400)
         .json("Wrong password or username!If You Are New Please SignUp first");
-
-    res.json("Welcome To Blogiing App" + blogusers.username);
+    } else {
+      res.json("Welcome To Blogiing App" + blogusers.username);
+    }
   } catch (error) {
     next(error.message);
   }
